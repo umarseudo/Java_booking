@@ -236,8 +236,8 @@ public class Booking_app extends javax.swing.JFrame {
         {
          Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/ADMIN/Documents/NetBeansProjects/Booking_system/database/booking");
          Statement st = conn.createStatement();
-         st.execute("INSERT INTO APP.BOOKING (NAME,ROOM) \n" +
-                    "VALUES ('"+jTextField1.getText()+"','"+jTextField2.getText()+"')");
+         st.execute("INSERT INTO APP.BOOKING (NAME,ROOM,DATE_FROM) \n" +
+                    "VALUES ('"+jTextField1.getText()+"','"+jTextField2.getText()+"','"+jTextField3.getText()+"')");
          JOptionPane.showMessageDialog(this,"Record inserted");
          
          
@@ -248,6 +248,7 @@ public class Booking_app extends javax.swing.JFrame {
          while(rst.next()){
             model.addRow(new String[]{rst.getString(1),rst.getString(2),rst.getString(3)});
         }
+         conn.close();
          
          
 //         String sql = "select * from APP.HOTEL";
@@ -284,6 +285,7 @@ public class Booking_app extends javax.swing.JFrame {
          while(rst.next()){
             model.addRow(new String[]{rst.getString(1)});
         }
+         conn.close();
         }
         catch(SQLException e) 
         {
@@ -309,6 +311,7 @@ public class Booking_app extends javax.swing.JFrame {
          while(rst.next()){
             model.addRow(new String[]{rst.getString(1),rst.getString(2),rst.getString(3)});
         }
+         conn.close();
         }
         catch(SQLException e) 
         {
